@@ -7,16 +7,13 @@ Created on Fri Feb 23 20:35:09 2024
 """
 
 def count_unique_proteins(protein_lis):
-    unique_proteins = set()
-    for protein in protein_lis():
-        unique_proteins.add(protein[:7])
-    return len(unique_proteins)
+    return len({protein.split('.')[0] for protein in protein_lis})
 
 def count_proteins(protein_lis):
     unique_fam_freq_dic = {}
     for protein in protein_lis:
-        protein_pf = protein[:7]
-        unique_fam_freq_dic[protein_pf] = unique_fam_freq_dic(protein_pf, 0) + 1
+        protein_pf = protein.split(".")[0]
+        unique_fam_freq_dic[protein_pf] = unique_fam_freq_dic.get(protein_pf, 0) + 1
     return unique_fam_freq_dic
 
 def merge_protein_counts(dic_1, dic_2):
