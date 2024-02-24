@@ -7,7 +7,8 @@ Created on Fri Feb 23 20:35:09 2024
 """
 
 def count_unique_proteins(protein_lis):
-    return len({protein.split('.')[0] for protein in protein_lis})
+    unique_protein_set = {protein.split('.')[0] for protein in protein_lis}
+    return len(unique_protein_set)
 
 def count_proteins(protein_lis):
     unique_fam_freq_dic = {}
